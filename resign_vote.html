@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RESIGN DHARMENDRA PRADHAN - Students of India Unite!</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=Oswald:wght@700&family=Rajdhani:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #cc0000;
+    --gold: #f5c200;
+    --white: #ffffff;
+    --dark: #0a0a0a;
+    --protest-green: #1a6600;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000;
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Animated protest crowd background */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.7) 0px,
+        rgba(0,0,0,0.7) 2px,
+        transparent 2px,
+        transparent 4px
+      ),
+      radial-gradient(ellipse at 20% 80%, rgba(204,0,0,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(245,194,0,0.2) 0%, transparent 50%),
+      #0a0a0a;
+  }
+
+  /* Floating protest signs */
+  .floating-text {
+    position: fixed;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(10px, 1.5vw, 16px);
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+    animation: floatUp linear infinite;
+    white-space: nowrap;
+    color: var(--red);
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(110vh) rotate(-5deg); opacity: 0; }
+    10% { opacity: 0.08; }
+    90% { opacity: 0.08; }
+    100% { transform: translateY(-10vh) rotate(5deg); opacity: 0; }
+  }
+
+  /* Glitch effect */
+  @keyframes glitch {
+    0%, 90%, 100% { transform: translate(0); }
+    92% { transform: translate(-3px, 1px); clip-path: inset(30% 0 40% 0); }
+    94% { transform: translate(3px, -1px); clip-path: inset(60% 0 10% 0); }
+    96% { transform: translate(-2px, 2px); clip-path: inset(10% 0 70% 0); }
+    98% { transform: translate(0); }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px) rotate(-0.5deg); }
+    75% { transform: translateX(4px) rotate(0.5deg); }
+  }
+
+  @keyframes pulse-red {
+    0%, 100% { box-shadow: 0 0 20px rgba(204,0,0,0.5), 0 0 60px rgba(204,0,0,0.3); }
+    50% { box-shadow: 0 0 40px rgba(204,0,0,0.9), 0 0 100px rgba(204,0,0,0.5); }
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(100vw); }
+    100% { transform: translateX(-100%); }
+  }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; }
+    93% { opacity: 1; }
+    94% { opacity: 0.4; }
+    95% { opacity: 1; }
+    97% { opacity: 0.6; }
+    98% { opacity: 1; }
+  }
+
+  @keyframes countPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+
+  /* TICKER */
+  .ticker-wrap {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--red);
+    padding: 6px 0;
+    z-index: 100;
+    overflow: hidden;
+    border-bottom: 2px solid var(--gold);
+  }
+  .ticker-text {
+    display: inline-block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: white;
+    animation: ticker 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  /* MAIN CONTAINER */
+  .container {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 70px 20px 40px;
+    text-align: center;
+  }
+
+  /* HEADER */
+  .demand-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(14px, 3vw, 18px);
+    letter-spacing: 8px;
+    color: var(--gold);
+    margin-bottom: 5px;
+    animation: flicker 4s infinite;
+  }
+
+  .main-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 14vw, 130px);
+    line-height: 0.9;
+    color: var(--red);
+    text-shadow:
+      3px 3px 0 #000,
+      6px 6px 0 rgba(204,0,0,0.3),
+      0 0 30px rgba(204,0,0,0.6);
+    animation: glitch 6s infinite, flicker 8s infinite;
+    margin-bottom: 0;
+  }
+
+  .minister-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(30px, 7vw, 70px);
+    color: var(--white);
+    text-shadow: 2px 2px 0 #000, 0 0 20px rgba(255,255,255,0.3);
+    letter-spacing: 4px;
+    line-height: 1;
+    margin: 5px 0 10px;
+  }
+
+  /* BRAINROT TAGS */
+  .brainrot-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 15px 0;
+  }
+
+  .brainrot-tag {
+    background: rgba(204,0,0,0.15);
+    border: 1px solid rgba(204,0,0,0.5);
+    color: #ff6666;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(9px, 2vw, 13px);
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    animation: shake 3s ease-in-out infinite;
+  }
+  .brainrot-tag:nth-child(2) { animation-delay: 0.3s; border-color: rgba(245,194,0,0.5); color: var(--gold); background: rgba(245,194,0,0.1); }
+  .brainrot-tag:nth-child(3) { animation-delay: 0.6s; }
+  .brainrot-tag:nth-child(4) { animation-delay: 0.9s; border-color: rgba(245,194,0,0.5); color: var(--gold); background: rgba(245,194,0,0.1); }
+  .brainrot-tag:nth-child(5) { animation-delay: 1.2s; }
+  .brainrot-tag:nth-child(6) { animation-delay: 0.5s; border-color: rgba(245,194,0,0.5); color: var(--gold); background: rgba(245,194,0,0.1); }
+
+  /* SUBTEXT */
+  .subtext {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(12px, 2.5vw, 16px);
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 8px 0 20px;
+    font-weight: 700;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 80%;
+    margin: 0 auto 25px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), var(--gold), var(--red), transparent);
+  }
+
+  /* VOTE SECTION */
+  .vote-section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 30px 20px;
+    margin: 20px 0;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vote-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(204,0,0,0.02) 10px,
+      rgba(204,0,0,0.02) 20px
+    );
+    pointer-events: none;
+  }
+
+  .vote-question {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 5vw, 40px);
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    color: var(--white);
+  }
+
+  .vote-question span {
+    color: var(--gold);
+  }
+
+  /* VOTE BUTTONS */
+  .vote-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+  }
+
+  .vote-btn {
+    padding: 20px 15px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(22px, 5vw, 36px);
+    letter-spacing: 3px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .vote-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+
+  .vote-btn:hover::after {
+    transform: translateX(0);
+  }
+
+  .btn-yes {
+    background: var(--red);
+    color: white;
+    border: 2px solid #ff2222;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    animation: pulse-red 2s infinite;
+  }
+
+  .btn-yes:hover:not(:disabled) {
+    transform: scale(1.04);
+    background: #ff0000;
+  }
+
+  .btn-no {
+    background: #111;
+    color: var(--gold);
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 15px rgba(245,194,0,0.2);
+  }
+
+  .btn-no:hover:not(:disabled) {
+    transform: scale(1.04);
+    background: rgba(245,194,0,0.1);
+  }
+
+  .vote-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
+  .btn-emoji {
+    display: block;
+    font-size: clamp(28px, 5vw, 44px);
+    margin-bottom: 4px;
+  }
+
+  .btn-label {
+    display: block;
+    font-size: clamp(10px, 2vw, 14px);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    opacity: 0.8;
+  }
+
+  /* VOTE RESULTS */
+  .results-wrap {
+    margin-top: 10px;
+  }
+
+  .result-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+    padding: 0 10px;
+  }
+
+  .result-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    width: 100px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .result-bar-wrap {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    height: 36px;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+  }
+
+  .result-bar {
+    height: 100%;
+    transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    min-width: 10px;
+    position: relative;
+  }
+
+  .bar-yes {
+    background: linear-gradient(90deg, #8b0000, var(--red));
+    box-shadow: 2px 0 20px rgba(204,0,0,0.5);
+  }
+
+  .bar-no {
+    background: linear-gradient(90deg, #7a6000, var(--gold));
+    box-shadow: 2px 0 20px rgba(245,194,0,0.4);
+  }
+
+  .bar-pct {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+    letter-spacing: 1px;
+  }
+
+  .result-count {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    width: 80px;
+    text-align: left;
+    flex-shrink: 0;
+    animation: countPulse 0.4s ease;
+  }
+
+  .count-yes { color: var(--red); }
+  .count-no { color: var(--gold); }
+
+  /* TOTAL COUNT */
+  .total-count {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(11px, 2vw, 14px);
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-top: 15px;
+    font-weight: 700;
+  }
+
+  .total-count strong {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.3em;
+  }
+
+  /* VOTED MESSAGE */
+  .voted-msg {
+    display: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(16px, 4vw, 24px);
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-top: 15px;
+    padding: 12px;
+    border: 1px solid rgba(245,194,0,0.3);
+    background: rgba(245,194,0,0.05);
+    animation: flicker 3s infinite;
+  }
+
+  /* PROTEST DEMANDS */
+  .demands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 25px 0;
+  }
+
+  .demand-card {
+    background: rgba(204,0,0,0.08);
+    border: 1px solid rgba(204,0,0,0.25);
+    padding: 15px;
+    border-radius: 2px;
+    text-align: left;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .demand-card:hover {
+    background: rgba(204,0,0,0.14);
+    border-color: rgba(204,0,0,0.5);
+  }
+
+  .demand-card::before {
+    content: '✊';
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    font-size: 18px;
+  }
+
+  .demand-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--red);
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+  }
+
+  .demand-card p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* India flag colors accent */
+  .india-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #FF9933 33.3%, white 33.3%, white 66.6%, #138808 66.6%);
+    margin: 20px 0;
+    opacity: 0.6;
+  }
+
+  /* Fist icon */
+  .fist {
+    font-size: clamp(40px, 8vw, 70px);
+    display: block;
+    margin: 0 auto 5px;
+    animation: shake 1.5s ease-in-out infinite;
+  }
+
+  @media (max-width: 480px) {
+    .vote-buttons { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .result-row { gap: 6px; }
+    .result-label { width: 60px; font-size: 14px; }
+    .result-count { width: 60px; font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Ticker -->
+<div class="ticker-wrap">
+  <span class="ticker-text">
+    ✊ STUDENTS OF INDIA UNITE &nbsp;|&nbsp; ACCOUNTABILITY TRANSPARENCY JUSTICE &nbsp;|&nbsp; RESIGN DHARMENDRA PRADHAN &nbsp;|&nbsp; FOR THE FUTURE OF STUDENTS &amp; THE NATION &nbsp;|&nbsp; #ResignDharmendra &nbsp;|&nbsp; EDUCATION CANNOT WAIT &nbsp;|&nbsp; DEMAND RESIGNATION NOW &nbsp;|&nbsp; ✊ STUDENTS OF INDIA UNITE &nbsp;|&nbsp; ACCOUNTABILITY TRANSPARENCY JUSTICE &nbsp;|&nbsp; RESIGN DHARMENDRA PRADHAN &nbsp;&nbsp;
+  </span>
+</div>
+
+<!-- Floating background protest words -->
+<div class="floating-text" style="left:5%;animation-duration:18s;animation-delay:0s;">RESIGN NOW</div>
+<div class="floating-text" style="left:20%;animation-duration:22s;animation-delay:3s;color:gold;opacity:0.05;">STUDENTS UNITE</div>
+<div class="floating-text" style="left:40%;animation-duration:16s;animation-delay:6s;">ACCOUNTABILITY</div>
+<div class="floating-text" style="left:60%;animation-duration:25s;animation-delay:1s;color:gold;opacity:0.05;">JUSTICE NOW</div>
+<div class="floating-text" style="left:75%;animation-duration:19s;animation-delay:8s;">TRANSPARENCY</div>
+<div class="floating-text" style="left:88%;animation-duration:21s;animation-delay:4s;color:gold;opacity:0.05;">RESIGN</div>
+<div class="floating-text" style="left:30%;animation-duration:23s;animation-delay:11s;">DEMAND CHANGE</div>
+<div class="floating-text" style="left:50%;animation-duration:17s;animation-delay:2s;color:gold;opacity:0.05;">CHEAT EXPOSED</div>
+<div class="floating-text" style="left:12%;animation-duration:20s;animation-delay:14s;">PAPER LEAK</div>
+
+<div class="bg-layer"></div>
+
+<div class="container">
+
+  <span class="fist">✊</span>
+
+  <div class="demand-tag">— WE DEMAND —</div>
+
+  <div class="main-title">RESIGN</div>
+
+  <div class="minister-name">DHARMENDRA PRADHAN</div>
+
+  <!-- India bar -->
+  <div class="india-bar"></div>
+
+  <!-- Brainrot tags -->
+  <div class="brainrot-wrap">
+    <span class="brainrot-tag">🔥 EDUCATION MINISTRY FAILED</span>
+    <span class="brainrot-tag">💀 NEET SCAM EXPOSED</span>
+    <span class="brainrot-tag">🚨 PAPER LEAK KING</span>
+    <span class="brainrot-tag">⚡ NO CAP HE MUST GO</span>
+    <span class="brainrot-tag">😤 CRORES KE SAPNE BARBAAD</span>
+    <span class="brainrot-tag">🗳️ STUDENTS ARE WATCHING</span>
+    <span class="brainrot-tag">💸 ACCOUNTABILITY OR BUST</span>
+    <span class="brainrot-tag">🎓 FUTURE ON FIRE</span>
+    <span class="brainrot-tag">📢 TRANSPARNECY KAB MILEGI</span>
+  </div>
+
+  <p class="subtext">✦ For the future of students &amp; the nation ✦</p>
+
+  <div class="divider"></div>
+
+  <!-- VOTE SECTION -->
+  <div class="vote-section">
+    <div class="vote-question">
+      Kya <span>Dharmendra Pradhan</span><br>ko resign karna chahiye?
+    </div>
+
+    <div class="vote-buttons">
+      <button class="vote-btn btn-yes" id="btnYes" onclick="vote('yes')">
+        <span class="btn-emoji">✊</span>
+        HAAN — RESIGN KRO
+        <span class="btn-label">Haan, resign dena chahiye</span>
+      </button>
+      <button class="vote-btn btn-no" id="btnNo" onclick="vote('no')">
+        <span class="btn-emoji">🤔</span>
+        NAHI — REHNE DO
+        <span class="btn-label">Nahi, rehne do unhe</span>
+      </button>
+    </div>
+
+    <div class="results-wrap">
+      <div class="result-row">
+        <div class="result-label" style="color:var(--red);">✊ HAAN</div>
+        <div class="result-bar-wrap">
+          <div class="result-bar bar-yes" id="barYes" style="width:0%">
+            <span class="bar-pct" id="pctYes">0%</span>
+          </div>
+        </div>
+        <div class="result-count count-yes" id="cntYes">0</div>
+      </div>
+      <div class="result-row">
+        <div class="result-label" style="color:var(--gold);">🤔 NAHI</div>
+        <div class="result-bar-wrap">
+          <div class="result-bar bar-no" id="barNo" style="width:0%">
+            <span class="bar-pct" id="pctNo">0%</span>
+          </div>
+        </div>
+        <div class="result-count count-no" id="cntNo">0</div>
+      </div>
+    </div>
+
+    <div class="total-count" id="totalCount">
+      Abhi tak <strong>0</strong> logo ne vote kiya
+    </div>
+
+    <div class="voted-msg" id="votedMsg">
+      ✅ AAPKA VOTE REGISTER HO GAYA — AWAAZ BULAND KARO! 📢
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DEMANDS GRID -->
+  <div class="demands-grid">
+    <div class="demand-card">
+      <h3>ACCOUNTABILITY</h3>
+      <p>NEET paper leak mein sabdo ki zimmedaari. Koi maafi nahi, sirf jawab chahiye.</p>
+    </div>
+    <div class="demand-card">
+      <h3>TRANSPARENCY</h3>
+      <p>Exam system mein poori transparency. Backdoor dealing band karo abhi.</p>
+    </div>
+    <div class="demand-card">
+      <h3>JUSTICE</h3>
+      <p>Crores students ka future barbad hua. Nyay milna chahiye — aaj aur abhi.</p>
+    </div>
+    <div class="demand-card">
+      <h3>REFORM NOW</h3>
+      <p>Education policy mein tatkaal sudhar. Sirf vaade nahi — action chahiye.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>Students of India Unite &nbsp;|&nbsp; #ResignDharmendra &nbsp;|&nbsp; Education Cannot Wait</div>
+    <div style="margin-top:5px;">This is a public opinion poll — Add your voice 🗳️</div>
+  </div>
+
+</div>
+
+<script>
+  // Initialize votes from localStorage
+  let votes = JSON.parse(localStorage.getItem('resignVotes') || '{"yes":0,"no":0}');
+  let hasVoted = localStorage.getItem('hasVotedResign') === 'true';
+
+  function updateUI() {
+    const yes = votes.yes;
+    const no = votes.no;
+    const total = yes + no;
+
+    document.getElementById('cntYes').textContent = yes.toLocaleString();
+    document.getElementById('cntNo').textContent = no.toLocaleString();
+    document.getElementById('totalCount').innerHTML = `Abhi tak <strong>${total.toLocaleString()}</strong> logo ne vote kiya`;
+
+    const yesPct = total > 0 ? Math.round((yes / total) * 100) : 0;
+    const noPct = total > 0 ? Math.round((no / total) * 100) : 0;
+
+    document.getElementById('barYes').style.width = yesPct + '%';
+    document.getElementById('barNo').style.width = noPct + '%';
+    document.getElementById('pctYes').textContent = yesPct + '%';
+    document.getElementById('pctNo').textContent = noPct + '%';
+
+    if (hasVoted) {
+      document.getElementById('btnYes').disabled = true;
+      document.getElementById('btnNo').disabled = true;
+      document.getElementById('votedMsg').style.display = 'block';
+    }
+  }
+
+  function vote(type) {
+    if (hasVoted) return;
+    votes[type]++;
+    hasVoted = true;
+    localStorage.setItem('resignVotes', JSON.stringify(votes));
+    localStorage.setItem('hasVotedResign', 'true');
+    // Animate count
+    const countEl = type === 'yes' ? document.getElementById('cntYes') : document.getElementById('cntNo');
+    countEl.style.animation = 'none';
+    void countEl.offsetWidth;
+    countEl.style.animation = 'countPulse 0.4s ease';
+    updateUI();
+  }
+
+  updateUI();
+</script>
+
+</body>
+</html>
